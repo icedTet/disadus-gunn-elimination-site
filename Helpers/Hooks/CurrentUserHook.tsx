@@ -16,7 +16,7 @@ export const useCurrentUser = () => {
       fetch(`${APIDOMAIN}/users/@me`, {
         method: "GET",
         headers: {
-          Authorization: etoken,
+          Authorization: etoken!,
           "Content-Type": "application/json",
         },
       }).then(async (response) => {

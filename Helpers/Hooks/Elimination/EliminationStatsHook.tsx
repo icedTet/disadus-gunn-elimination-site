@@ -19,7 +19,7 @@ export const useEliminationStats = (gameID?: string) => {
     EliminationToken.then((token) => {
       fetch(`${APIDOMAIN}/elimination/game/${gameID}/user/@me`, {
         headers: {
-          Authorization: token,
+          Authorization: token!,
         },
       })
         .then((resp) => resp.json())

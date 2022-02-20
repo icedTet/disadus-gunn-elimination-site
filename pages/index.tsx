@@ -14,9 +14,11 @@ export const EliminationPage = () => {
   const user = useContext(UserContext);
   return (
     <div className={`w-full flex flex-col items-center`}>
-      <div className={`max-w-prose flex flex-col items-center gap-8 w-full p-8`}>
+      <div
+        className={`max-w-prose flex flex-col items-center gap-8 w-full p-8`}
+      >
         {minigames?.map((minigame) => (
-          <GameOverviewCard game={minigame} />
+          <GameOverviewCard game={minigame} key={minigame.id} />
         ))}
       </div>
     </div>

@@ -19,7 +19,7 @@ export const useMinigame = (gameID?: string) => {
         const partaking = await fetch(`${APIDOMAIN}/game/${gameID}/joined`, {
           method: "GET",
           headers: {
-            Authorization: await EliminationToken,
+            Authorization: (await EliminationToken)!,
           },
         });
         if (partaking.status === 200) {

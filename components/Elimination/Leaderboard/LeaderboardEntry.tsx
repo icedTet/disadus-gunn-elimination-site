@@ -28,7 +28,7 @@ export const EliminationLeaderboardEntryViewer = (props: {
         }  rounded-full flex-row gap-2 shadow-sm ${userData.eliminated && `opacity-50`}`}
       >
         <img
-          src={user?.pfp || `https://disadus.app/logo.png`}
+          src={`https://disadus.app/logo.png`}
           className={`w-16 h-16 rounded-full flex-shrink-0 drop-shadow `}
         />
         <div className={`flex flex-col flex-grow justify-evenly`}>

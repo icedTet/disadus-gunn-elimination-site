@@ -38,7 +38,7 @@ export const EliminationInfoCard = (props: { gameID?: string }) => {
             How to Play
           </button>
           {community &&
-            (community?.admins as string[]).includes(self?.id || "") && (
+            (community?.admins as string[]).includes(self?.userID || "") && (
               <button
                 className={`p-1 px-4 border-collapse text-red-500 border-red-500 border-2 rounded-full hover:bg-red-500 hover:text-white transition-all`}
                 onClick={() => setHelpOpen(true)}
