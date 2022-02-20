@@ -6,4 +6,15 @@ export type MinigameType = {
   id: string;
   name: string;
   participating?: boolean;
+  description?: string;
+};
+export type MinigameUser = {
+  userID: string;
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  admin: boolean;
+  createdBy: "Disadus" | "Gunn.One" | "WATT" | "Standalone";
+  password: string;
 };

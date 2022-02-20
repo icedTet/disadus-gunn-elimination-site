@@ -1,6 +1,6 @@
-import { User } from "@Disadus/disadus-plugin-api/dist/types/DisadusTypes";
 import { createContext } from "react";
+import { MinigameUser } from "../../Types/MinigameTypes";
 
-export const UserContext = createContext(null as User | null);
+export const UserContext = createContext(null as MinigameUser | null);
 export const UserContextProvider = UserContext.Provider;
 export default UserContext;

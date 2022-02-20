@@ -3,9 +3,10 @@
 
 
 "@Disadus/disadus-plugin-api@Disadus/disadus-plugin-api":
-  version "1.4.4"
-  resolved "https://codeload.github.com/Disadus/disadus-plugin-api/tar.gz/c8239ba6ec448c702a11ee053470379247d1e2db"
+  version "1.6.6"
+  resolved "https://codeload.github.com/Disadus/disadus-plugin-api/tar.gz/87530be44edece81820f55df8107664fd0586577"
   dependencies:
+    localforage "^1.10.0"
     node-fetch "^3.2.0"
 
 "@babel/code-frame@^7.0.0":
@@ -239,6 +240,11 @@
   version "17.0.15"
   resolved "https://registry.npmjs.org/@types/node/-/node-17.0.15.tgz"
   integrity sha512-zWt4SDDv1S9WRBNxLFxFRHxdD9tvH8f5/kg5/IaLFdnSNXsDY4eL3Q3XXN+VxUnWIhyVFDwcsmAprvwXoM/ClA==
+
+"@types/offscreencanvas@^2019.6.4":
+  version "2019.6.4"
+  resolved "https://registry.yarnpkg.com/@types/offscreencanvas/-/offscreencanvas-2019.6.4.tgz#64f6d120b53925028299c744fcdd32d2cd525963"
+  integrity sha512-u8SAgdZ8ROtkTF+mfZGOscl0or6BSj9A4g37e6nvxDc+YB/oDut0wHkK2PBBiC2bNR8TS0CPV+1gAk4fNisr1Q==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -949,6 +955,11 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
+dotenv@^16.0.0:
+  version "16.0.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.0.tgz#c619001253be89ebb638d027b609c75c26e47411"
+  integrity sha512-qD9WU0MPM4SWLPJy/r2Be+2WgQj8plChsyrCNQzW/0WjvcJQiKQJ9mH3ZgB3fxbUUxgc/11ZJ0Fi5KiimWGz2Q==
+
 electron-to-chromium@^1.4.17:
   version "1.4.65"
   resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.65.tgz"
@@ -1566,6 +1577,11 @@ imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.npmjs.org/imurmurhash/-/imurmurhash-0.1.4.tgz"
   integrity sha1-khi5srkoojixPcT7a21XbyMUU+o=
+
+infer-next-props-type@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/infer-next-props-type/-/infer-next-props-type-0.0.4.tgz#4166dc98a86bb581c2bbd77ee7e9bffc36f0e3bf"
+  integrity sha512-2Da2QS/W3FvRCwxHGEoYSE/o4ETLN/BXTzj64g67KNyyGHfAV/YYEq9tDB20wooyQRZBF9/FGxvcEo45MtVZjg==
 
 inflight@^1.0.4:
   version "1.0.6"
@@ -2348,6 +2364,13 @@ purgecss@^2.3.0:
     postcss "7.0.32"
     postcss-selector-parser "^6.0.2"
 
+qr-scanner@^1.2.0, qr-scanner@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/qr-scanner/-/qr-scanner-1.4.0.tgz#12e5cf1657f30e3ee079421d34e02e1b2d5909b8"
+  integrity sha512-/WGS0Vf39G/AEKslmE4EGevoYhhbX2iX4tsFp9dT0wtHJgKlCPk2vCXOJr8HnCICyj4TJS6GRmUUGjBf8AUEHA==
+  dependencies:
+    "@types/offscreencanvas" "^2019.6.4"
+
 qrcode@^1.5.0:
   version "1.5.0"
   resolved "https://registry.npmjs.org/qrcode/-/qrcode-1.5.0.tgz"
@@ -2400,6 +2423,13 @@ react-virtual@^2.10.4:
   integrity sha512-Ir6+oPQZTVHfa6+JL9M7cvMILstFZH/H3jqeYeKI4MSUX+rIruVwFC6nGVXw9wqAw8L0Kg2KvfXxI85OvYQdpQ==
   dependencies:
     "@reach/observe-rect" "^1.1.0"
+
+react-webcam-qr-scanner.ts@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-webcam-qr-scanner.ts/-/react-webcam-qr-scanner.ts-1.0.4.tgz#2ab3b22beb6dd1cc4f7c73a5f72780f6c382dd3e"
+  integrity sha512-zVbvTNBAqhDK6UPKat21hO2gWgIn9EJV8d4FE9+53aSJpLMsnCuETUfaZIGqCojCu07ub0rUv1hrtq+ADH6/bg==
+  dependencies:
+    qr-scanner "^1.2.0"
 
 react@17.0.2:
   version "17.0.2"

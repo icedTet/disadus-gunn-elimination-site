@@ -17,14 +17,14 @@ export const EliminationLeaderboardEntryViewer = (props: {
     >
       <div
         className={`flex-shrink-0 p-2 h-8 w-8 text-center rounded-full ${
-          currentUser?.id === userData.userID ?`bg-emerald-400 bg-opacity-50`:`bg-gray-100 dark:bg-gray-800`
+          currentUser?.userID === userData.userID ?`bg-emerald-400 bg-opacity-50`:`bg-gray-100 dark:bg-gray-800`
         } flex flex-row items-center justify-center shadow-md `}
       >
         {index === -1 ? `—` : index + 1}
       </div>
       <div
         className={`flex flex-grow h-16 bg-gray-100 ${
-          currentUser?.id === userData.userID ?`bg-emerald-400 bg-opacity-50`:`bg-gray-100 dark:bg-gray-750`
+          currentUser?.userID === userData.userID ?`bg-emerald-400 bg-opacity-50`:`bg-gray-100 dark:bg-gray-750`
         }  rounded-full flex-row gap-2 shadow-sm ${userData.eliminated && `opacity-50`}`}
       >
         <img
@@ -40,7 +40,7 @@ export const EliminationLeaderboardEntryViewer = (props: {
             {index === 1 && <BiMedal className={`w-6 h-6 text-gray-500`} />}
             {index === 2 && <BiMedal className={`w-6 h-6 text-orange-500`} />}
           </span>
-          <span className={`text-sm font-medium`}>@{user?.username}</span>
+          <span className={`text-sm font-medium`}>@{user?.userID}</span>
         </div>
 
         <div className={`flex flex-row items-center gap-1 px-2 pr-4`}>

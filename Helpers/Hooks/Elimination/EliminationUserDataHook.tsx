@@ -2,6 +2,7 @@ import { PublicUser } from "@Disadus/disadus-plugin-api/dist/types/DisadusTypes"
 import localforage from "localforage";
 import { useEffect, useState } from "react";
 import APIClient from "../../../Global/APIClient";
+import EliminationToken from "../../../Global/ElimAPIClient";
 import { EliminationUserData } from "../../../Types/EliminationTypes";
 import { APIDOMAIN } from "../../constants";
 import { EliminationListener } from "../../Listeners/EliminationListener";
@@ -17,10 +18,10 @@ export const useEliminationUserData = (gameID?: string, id?: string) => {
     localforage
       .getItem(`eliminationUserData-${gameID}-${id}`)
       .then((data) => data && setuser(data as Partial<EliminationUserData>));
-    APIClient!.waitForToken().then((token) =>
+    EliminationToken.then((token) =>
       fetch(`${APIDOMAIN}/elimination/game/${gameID}/user/${id}`, {
         headers: {
-          Authorization: token.token,
+          Authorization: token!,
         },
       })
         .then((resp) => resp.json())

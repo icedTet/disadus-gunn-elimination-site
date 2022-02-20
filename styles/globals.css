@@ -25,12 +25,16 @@ a {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   overflow: auto;
   width: 100%;
   height: 100%;
 }
-#__next{
+#__next {
   height: 100%;
   font-family: Ubuntu;
+}
+.btn-primary {
+  @apply px-4 py-2 text-white transition-all bg-pink-400 rounded-lg shadow-sm cursor-pointer bg-gradient-to-r from-red-400 to-orange-400 via-rose-400 hover:shadow-md shadow-rose-400 hover:shadow-rose-400 hover:brightness-105;
 }

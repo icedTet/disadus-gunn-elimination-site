@@ -1,6 +1,6 @@
 import { DisadusLMSTypes, DisadusTypes } from "@Disadus/disadus-plugin-api";
 import { DISADUSAPI } from "../constants";
-
+import fetch from "node-fetch";
 export const getDisadusUser = (token: string) =>
   fetch(`${DISADUSAPI}/users/@me`, {
     headers: {

@@ -4,43 +4,53 @@ import { useEffect, useState } from "react";
 import APIClient from "../../Global/APIClient";
 import { APIDOMAIN } from "../constants";
 import { MinigameType } from "../../Types/MinigameTypes";
+import EliminationToken from "../../Global/ElimAPIClient";
+import LiveEventsListener from "../Listeners/LiveEventsListener";
 
-export const useCommunityMinigames = (communityID?: string) => {
-  const [communityMinigames, setCommunityMinigames] = useState(
-    null as null | MinigameType[]
-  );
+export const useAllMinigames = () => {
+  const [Minigames, setMinigames] = useState(null as null | MinigameType[]);
   useEffect(() => {
-    if (!communityID) return;
     localforage
-      .getItem(`communityMinigames-${communityID}`)
-      .then((data) => data && setCommunityMinigames(data as MinigameType[]));
-    fetch(`${APIDOMAIN}/community/${communityID}/games`)
+      .getItem(`Minigames`)
+      .then((data) => data && setMinigames(data as MinigameType[]));
+    fetch(`${APIDOMAIN}/games`)
       .then((resp) => resp.json())
       .then((resp) => {
+        console.log(resp);
         const minigames = resp as MinigameType[];
         Promise.all(
           minigames.map(async (m) => {
-            const partaking = await fetch(
-              `${APIDOMAIN}/game/${m.id}/participants/self`,
-              {
-                method: "GET",
-                headers: {
-                  Authorization: `Plugin ${await (
-                    await APIClient!.waitForToken()
-                  ).token}`,
-                },
-              }
-            );
+            const partaking = await fetch(`${APIDOMAIN}/game/${m.id}/joined`, {
+              method: "GET",
+              headers: {
+                Authorization: (await EliminationToken)!,
+              },
+            });
             if (partaking.status === 200) {
-              m.participating = true;
+              m.participating = (await partaking.json()).joined as boolean;
             }
             return m;
           })
         ).then((resp) => {
-          setCommunityMinigames(resp as MinigameType[]);
-          localforage.setItem(`communityMinigames-${communityID}`, resp);
+          setMinigames(resp as MinigameType[]);
+          localforage.setItem(`Minigames`, resp);
         });
       });
-  }, [communityID]);
-  return communityMinigames;
+  }, []);
+  useEffect(() => {
+    const listener = (updatedGame: { gameInfo: MinigameType }) => {
+      setMinigames(
+        (m) =>
+          m?.map((game) => {
+            if (game.id !== updatedGame.gameInfo.id) return game;
+            return updatedGame.gameInfo;
+          }) || null
+      );
+    };
+    LiveEventsListener.addListener("gameUpdated", listener);
+    return () => {
+      LiveEventsListener.removeListener("gameUpdated", listener);
+    };
+  }, []);
+  return Minigames;
 };

@@ -1,6 +1,7 @@
 import EventEmitter from "events";
 import { io, Socket } from "socket.io-client";
 import APIClient from "../../Global/APIClient";
+import EliminationToken from "../../Global/ElimAPIClient";
 import { APIDOMAIN } from "../constants";
 export class LiveEventsListenerBase extends EventEmitter {
   static self: LiveEventsListenerBase;
@@ -17,10 +18,9 @@ export class LiveEventsListenerBase extends EventEmitter {
     this.init();
   }
   async init() {
-    if (!APIClient) return;
     this.socket = io(APIDOMAIN, {
       extraHeaders: {
-        Authorization: await (await APIClient!.waitForToken()).token,
+        Authorization: (await EliminationToken)!,
       },
     }).on("connect", () => {
       this.ready = true;

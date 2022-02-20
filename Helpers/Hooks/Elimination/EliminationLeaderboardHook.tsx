@@ -7,6 +7,7 @@ import {
   EliminationLeaderboardEntry,
   EliminationUserData,
 } from "../../../Types/EliminationTypes";
+import EliminationToken from "../../../Global/ElimAPIClient";
 
 export const useEliminationLeaderboard = (gameID?: string) => {
   const [leaderboard, setLeaderboard] = useState(
@@ -23,10 +24,10 @@ export const useEliminationLeaderboard = (gameID?: string) => {
           !cancelled &&
           setLeaderboard(data as EliminationLeaderboardEntry[])
       );
-    APIClient!.waitForToken().then((token) => {
+    EliminationToken.then((token) => {
       fetch(`${APIDOMAIN}/elimination/game/${gameID}/top`, {
         headers: {
-          Authorization: token.token,
+          Authorization: token!,
         },
       })
         .then((resp) => resp.json())

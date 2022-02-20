@@ -13,7 +13,7 @@ export const EliminationTarget = (props: { gameID?: string }) => {
   const targetRank = leaderboard?.findIndex(
     (user) => user.userID === stats?.targetID
   );
-  const elimTarget = useEliminationUserData(props.gameID, target?.id);
+  const elimTarget = useEliminationUserData(props.gameID, target?.userID);
   return (
     <div
       className={`w-full h-full rounded-lg p-4 pb-6 flex flex-col gap-4 dark:bg-red-700 bg-red-300 dark:bg-opacity-30 group shadow-md`}
@@ -25,7 +25,7 @@ export const EliminationTarget = (props: { gameID?: string }) => {
       </div>
       <div className={`flex flex-row gap-8 w-full justify-center items-center flex-grow`}>
         <img
-          src={target?.pfp || `https://disadus.app/logo.png`}
+          src={`https://disadus.app/logo.png`}
           className={`w-24 h-24 rounded-full`}
         />
         <div className={`flex flex-col gap-1 h-full justify-center `}>
@@ -33,7 +33,7 @@ export const EliminationTarget = (props: { gameID?: string }) => {
             {target?.firstName} {target?.lastName}
           </span>
           <span className={`text-xl font-medium text-yellow-100`}>
-            @{target?.username}
+            @{target?.userID}
           </span>
         </div>
       </div>

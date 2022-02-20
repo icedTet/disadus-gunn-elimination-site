@@ -4,6 +4,7 @@ import APIClient from "../../../Global/APIClient";
 import { APIDOMAIN } from "../../constants";
 import { MinigameType } from "../../../Types/MinigameTypes";
 import { EliminationUserData } from "../../../Types/EliminationTypes";
+import { EliminationToken } from "../../../Global/ElimAPIClient";
 
 export const useEliminationStats = (gameID?: string) => {
   const [stats, setStats] = useState(null as null | EliminationUserData);
@@ -15,10 +16,10 @@ export const useEliminationStats = (gameID?: string) => {
       .then(
         (data) => data && !cancelled && setStats(data as EliminationUserData)
       );
-    APIClient!.waitForToken().then((token) => {
+    EliminationToken.then((token) => {
       fetch(`${APIDOMAIN}/elimination/game/${gameID}/user/@me`, {
         headers: {
-          Authorization: token.token,
+          Authorization: token,
         },
       })
         .then((resp) => resp.json())

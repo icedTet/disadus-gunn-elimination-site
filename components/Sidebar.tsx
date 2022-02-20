@@ -1,8 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import CommunityContext from "../Helpers/Contexts/CommunityContext";
 import { useCurrentCommunityMinigame } from "../Helpers/Hooks/CurrentMinigame";
-import { useCommunityMinigames } from "../Helpers/Hooks/CMinigameHook";
+import { useAllMinigames } from "../Helpers/Hooks/CMinigameHook";
 import GameInfoCard from "./GameInfoCard";
+import UserContext from "../Helpers/Contexts/UserContext";
+import { PlusIcon } from "@heroicons/react/outline";
+import { CreateGameModal } from "./Admin/CreateGameModal";
 const timeLeftFormatted = (time: number) => {
   const now = Date.now();
   const timeLeft = time - now;
@@ -14,21 +17,19 @@ const timeLeftFormatted = (time: number) => {
 };
 export const GamesSidebar = () => {
   const community = useContext(CommunityContext);
-  const gameInfo = useCurrentCommunityMinigame(community?.id);
-  const allGames = useCommunityMinigames(community?.id);
-
+  const user = useContext(UserContext);
+  const gameInfo = useCurrentCommunityMinigame();
+  const allGames = useAllMinigames();
+  const [createGameOpen, setCreateGameOpen] = useState(false);
+  
   return (
     <div
       className={` top-0 z-20 h-full overflow-visible bg-gray-100 w-80 course-sidebar dark:bg-gray-800 lg:bottom-0 lg:h-16 lg:w-full lg:block transition-all lg:order-1 flex-shrink-0`}
     >
-      {/* <div
-      className={`w-full h-[130%] inf:hidden lg:block`}
-      style={{
-        WebkitMaskImage: `linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.7) 100%)`,
-      }}
-    >
-      <img src={community?.vanitybg} className={`h-full w-auto min-w-[100%] object-cover object-center`} />
-    </div> */}
+      <CreateGameModal
+        visible={createGameOpen}
+        onClose={() => setCreateGameOpen(false)}
+      />
       <div
         className={`flex flex-col h-full gap-2 overflow-visible w-full relative`}
       >
@@ -60,49 +61,31 @@ export const GamesSidebar = () => {
                 >
                   {community?.name}
                 </span>
-                <div
-                  className={`p-1.5 hover:bg-gray-500 !bg-opacity-40 transition-all duration-200 rounded-full cursor-pointer relative group lg:hidden`}
-                  onClick={() => {
-                    // courseContext?.setViewMembers!((x) => !x);
-                    // screenSmallerThan("md") && setSidebarExpanded(false);
-                  }}
-                >
-                  {/* <UserGroupIcon className="w-5 h-5" /> */}
-                  <div
-                    className={`absolute translate-y-[125%] bottom-0 -translate-x-1/2 left-1/2 group-hover:scale-100 scale-0 origin-top whitespace-nowrap p-2 bg-gray-900 text-gray-200 transition-all rounded-default`}
-                  >
-                    View Classmates
-                  </div>
-                </div>
               </div>
               <span
                 className={`font-inter font-normal text-sm dark:text-gray-300 drop-shadow-md`}
               >
                 Disadus Minigames
               </span>
+              {user?.admin && (
+                <div
+                  className={`dark:hover:bg-gray-800/80 hover:bg-gray-500/20 cursor-pointer rounded-lg group overflow-hidden flex flex-row items-center px-2`}
+                  onClick={() => setCreateGameOpen(true)}
+                >
+                  <PlusIcon className={`w-6 h-6 group-hover:text-red-500`} />
+                  <span
+                    className={`group-hover:bg-gradient-to-r from-red-500 via-orange-400 to-red-500 animate-gradient-slow flex flex-row gap-2 p-2 w-full group-hover:!text-transparent group-hover:bg-clip-text transition-all`}
+                  >
+                    Add Game
+                  </span>
+                </div>
+              )}
             </div>
           </div>
         </div>
         <div
           className={`flex flex-col items-start justify-start p-4 gap-2 lg:flex-row lg:justify-evenly lg:items-center lg:w-full lg:h-full`}
-        >
-          {/* <CourseSidebarProvider value={{ selectedTab, setSelectedTab }}>
-            {props.items?.map((item, index) => (
-              <CourseSidebarItemLink key={index} item={item} />
-            ))}
-            <div className={`inf:hidden lg:block`}>
-              <CourseSidebarItemLink
-                key={props.items.length}
-                item={{
-                  name: "View Classmates",
-                  icon: () => <UserGroupIcon className="w-5 h-5" />,
-                  select: 3,
-                  disabled: false,
-                }}
-              />
-            </div>
-          </CourseSidebarProvider> */}
-        </div>
+        ></div>
 
         {gameInfo && (
           <div className={`flex flex-col items-start justify-start p-4 gap-2 `}>

@@ -28,7 +28,7 @@ export const KillCodeModal = (props: {
       hideBG
     >
       <div
-        className={`w-128 h-128 max-w-[90vw] max-h-screen rounded-xl dark:bg-gray-700 bg-white flex flex-col p-8 gap-4 dark:text-gray-200 text-gray-900 drop-shadow-sm`}
+        className={`w-156 h-128 max-w-[95vw] md:w-screen md:h-144 max-h-screen rounded-xl dark:bg-gray-700 bg-white flex flex-col p-8 gap-4 dark:text-gray-200 text-gray-900 drop-shadow-sm`}
       >
         <div
           className={`w-full h-20 flex flex-col justify-start items-center gap-4`}
@@ -55,12 +55,12 @@ export const KillCodeModal = (props: {
             className={`flex flex-row w-full justify-between items-center gap-4`}
           >
             <div
-              className={`p-4 shadow-inner bg-gray-100 dark:bg-gray-850 rounded-lg text-center flex-grow text-2xl font-bold font-source`}
+              className={`p-4 shadow-inner bg-gray-100 dark:bg-gray-850 rounded-lg text-center flex-grow text-2xl font-medium font-source`}
             >
               {userData?.secret}
             </div>
             <button
-              className={`p-1 px-4 border-collapse text-primary-500 border-primary-500 border-2 rounded-full hover:bg-primary-500 hover:text-white transition-all`}
+              className={`p-1 px-4 border-collapse text-primary-500 border-primary-500 border-2 rounded-full hover:bg-primary-500 hover:text-white transition-all whitespace-nowrap`}
               onClick={() => setOpen(false)}
             >
               Got it!
