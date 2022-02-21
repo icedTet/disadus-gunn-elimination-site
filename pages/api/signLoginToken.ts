@@ -2,9 +2,7 @@
 import { DisadusLMSTypes, DisadusTypes } from "@Disadus/disadus-plugin-api";
 import type { NextApiRequest, NextApiResponse } from "next";
 import fetch from "node-fetch";
-import dotenv from "dotenv";
 import { APIDOMAIN, DISADUSAPI } from "../../Helpers/constants";
-dotenv.config();
 type Data = {
   error?: string;
   token?: string;
