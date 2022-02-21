@@ -1,5 +1,7 @@
 import Link from "next/link";
+import EliminationToken from "../../Global/ElimAPIClient";
 import { APIDOMAIN } from "../../Helpers/constants";
+import LiveEventsListener from "../../Helpers/Listeners/LiveEventsListener";
 import { MinigameType } from "../../Types/MinigameTypes";
 
 export const GameOverviewCard = (props: { game: MinigameType }) => {
@@ -9,10 +11,13 @@ export const GameOverviewCard = (props: { game: MinigameType }) => {
       method: "POST",
       headers: new Headers({
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        Authorization: (await EliminationToken)!,
       }),
     });
     if (response.status === 200) {
+      LiveEventsListener.emit("gameUpdated", {
+        gameInfo: { ...game, participating: true },
+      });
     } else {
     }
   };

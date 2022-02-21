@@ -14,7 +14,7 @@ export const EliminationKillFeedEntry = (props: {
   return (
     <div className={`w-full px-4 py-2`}>
       <div
-        className={`w-full bg-gray-50 dark:bg-gray-700 shadow-md rounded-lg flex flex-row gap-4 px-6 py-4 items-center`}
+        className={`w-full bg-gray-50 dark:bg-gray-700 shadow-md rounded-lg flex flex-row gap-4 px-6 py-4 items-center md:mb-6`}
       >
         <img
           src={`https://disadus.app/logo.png`}

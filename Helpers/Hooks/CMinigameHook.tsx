@@ -43,7 +43,7 @@ export const useAllMinigames = () => {
         (m) =>
           m?.map((game) => {
             if (game.id !== updatedGame.gameInfo.id) return game;
-            return updatedGame.gameInfo;
+            return {...game,...updatedGame.gameInfo};
           }) || null
       );
     };

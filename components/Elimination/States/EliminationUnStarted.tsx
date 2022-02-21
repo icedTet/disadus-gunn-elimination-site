@@ -2,6 +2,7 @@ import { RefreshIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 import EliminationToken from "../../../Global/ElimAPIClient";
 import { APIDOMAIN } from "../../../Helpers/constants";
+import { useCurrentUser } from "../../../Helpers/Hooks/CurrentUserHook";
 import { MinigameType } from "../../../Types/MinigameTypes";
 import { EliminationInfoboard } from "../EliminationInfoboard";
 import { EliminationKillFeedBase } from "../KillFeed/EliminationKillFeedBase";
@@ -9,6 +10,7 @@ import EliminationLeaderboard from "../Leaderboard/EliminationLeaderboardBase";
 
 export const EliminationUnStarted = (props: { game: MinigameType }) => {
   const [starting, setStarting] = useState(false);
+  const user = useCurrentUser();
   return (
     <div className={`w-full h-full flex flex-col gap-4`}>
       <div
@@ -21,35 +23,37 @@ export const EliminationUnStarted = (props: { game: MinigameType }) => {
           {props.game.name}
         </h1>
         <h1 className={`text-xl`}> to start </h1>
-        <div className={`flex flex-row pt-4`}>
-          <button
-            className={`btn-primary`}
-            onClick={async () => {
-              setStarting(true);
-              fetch(
-                `${APIDOMAIN}/elimination/game/${props.game.id}/admin/start`,
-                {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                    Authorization: (await EliminationToken)!,
-                  },
-                }
-              ).then((x) => {
-                setStarting(false);
-              });
-            }}
-          >
-            {starting ? (
-              <div className={`flex flex-row gap-2 items-center`}>
-                <RefreshIcon className={`w-4 h-4 animate-reverse-spin`} />
-                Starting Game
-              </div>
-            ) : (
-              "Start Game"
-            )}
-          </button>
-        </div>
+        {user?.admin && (
+          <div className={`flex flex-row pt-4 `}>
+            <button
+              className={`btn-primary`}
+              onClick={async () => {
+                setStarting(true);
+                fetch(
+                  `${APIDOMAIN}/elimination/game/${props.game.id}/admin/start`,
+                  {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: (await EliminationToken)!,
+                    },
+                  }
+                ).then((x) => {
+                  setStarting(false);
+                });
+              }}
+            >
+              {starting ? (
+                <div className={`flex flex-row gap-2 items-center`}>
+                  <RefreshIcon className={`w-4 h-4 animate-reverse-spin`} />
+                  Starting Game
+                </div>
+              ) : (
+                "Start Game"
+              )}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

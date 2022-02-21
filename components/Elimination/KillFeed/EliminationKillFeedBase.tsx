@@ -12,9 +12,9 @@ export const EliminationKillFeedBase = (props: { gameID?: string }) => {
     overscan: 2,
   });
   return (
-    <div className={`relative h-128 w-full flex-shrink-0`}>
+    <div className={`relative h-128 w-full flex-shrink-0 md:h-full`}>
       <div
-        className={`w-full h-full top-0 left-0 absolute overflow-y-auto scrollbar-none rounded-lg bg-gray-100 dark:bg-gray-750 p-4`}
+        className={`w-full h-full top-0 left-0 absolute overflow-y-auto scrollbar-none rounded-lg bg-gray-100 dark:bg-gray-750 p-4 md:rounded-none md:!bg-transparent md:pt-12`}
         ref={parentRef}
       >
         <div
@@ -26,7 +26,9 @@ export const EliminationKillFeedBase = (props: { gameID?: string }) => {
           {rowVirtualizer.virtualItems.map((virtualRow) => (
             <div
               ref={virtualRow.measureRef}
-              key={`${killfeed![virtualRow.index].at}${killfeed![virtualRow.index].entity}${killfeed![virtualRow.index].target}`}
+              key={`${killfeed![virtualRow.index].at}${
+                killfeed![virtualRow.index].entity
+              }${killfeed![virtualRow.index].target}`}
               style={{
                 position: "absolute",
                 top: 0,

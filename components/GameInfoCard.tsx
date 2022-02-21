@@ -13,6 +13,7 @@ import EliminationToken from "../Global/ElimAPIClient";
 import { APIDOMAIN } from "../Helpers/constants";
 import APIClient from "../Global/APIClient";
 import { PluginIntent } from "@Disadus/disadus-plugin-api/dist/APIWrapper";
+import LiveEventsListener from "../Helpers/Listeners/LiveEventsListener";
 
 export const GameInfoCard = (props: { game: MinigameType }) => {
   const { game } = props;
@@ -91,7 +92,12 @@ export const GameInfoCard = (props: { game: MinigameType }) => {
                     );
 
                     if (resp.status === 200) {
-                      alert("Successfully joined game!");
+                      LiveEventsListener.emit("gameUpdated", {
+                        gameInfo: {
+                          ...game,
+                          participating: true,
+                        },
+                      });
                     }
                     setButtonsDisabled(false);
                   }}

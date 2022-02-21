@@ -36,7 +36,7 @@ export default async function handler(
       {
         headers: {
           Authorization: DisadusToken,
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       }
     );
@@ -61,10 +61,57 @@ export default async function handler(
       email,
     }),
   });
-  if (token.status !== 200)
+  const userID = email.split("@")[0].toUpperCase();
+  if (token.status !== 200) {
+    console.log(token.status);
+    if (token.status === 469) {
+      //user not found, create user
+      const createUser = await fetch(`${APIDOMAIN}/createUser`, {
+        headers: {
+          Authorization: process.env.ELIM_KEY!,
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+          userID,
+          username: selfData.username,
+          firstName: selfData.firstName,
+          lastName: selfData.lastName,
+          email,
+          admin: false,
+          pfp: selfData.pfp,
+          password: "disadoos",
+        }),
+      });
+      if (createUser.status !== 200) {
+        return res.status(401).send({
+          error: "Create user failed",
+        });
+      }
+      let newToken = await fetch(`${APIDOMAIN}/login`, {
+        headers: {
+          Authorization: process.env.ELIM_KEY!,
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+          email,
+        }),
+      });
+      if (newToken.status !== 200) {
+        return res.status(401).send({
+          error: "Create user + login failed",
+        });
+      }
+      const tokenData = await newToken.text();
+      return res.status(200).send({
+        token: tokenData,
+      });
+    }
     return res.status(401).send({
       error: "Invalid token",
     });
+  }
   const tokenData = await token.text();
   return res.status(200).send({
     token: tokenData,

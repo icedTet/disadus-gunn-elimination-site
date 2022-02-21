@@ -22,6 +22,7 @@ export const EliminationPage = (
   const [minigame, setMinigame] = useState(props.minigame);
   useEffect(() => {
     // setup listener for minigame changes
+    setMinigame(props.minigame);
     const listener = (updatedGame: { gameInfo: MinigameType }) => {
       setMinigame(updatedGame.gameInfo);
     };

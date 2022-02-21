@@ -35,7 +35,7 @@ export const EliminationInfoCard = (props: { gameID?: string }) => {
             className={`p-1 px-4 border-collapse text-blue-500 border-blue-500 border-2 rounded-full hover:bg-blue-500 hover:text-white transition-all`}
             onClick={() => setHelpOpen(true)}
           >
-            How to Play
+            How to Play / Rules
           </button>
           {community &&
             (community?.admins as string[]).includes(self?.userID || "") && (
