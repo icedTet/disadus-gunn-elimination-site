@@ -49,6 +49,7 @@ export default async function handler(
     email = selfData.email;
   }
   if (!email) return res.status(401).send({ error: "Invalid token" });
+  console.warn("Debug",process.env.ELIM_KEY)
   const token = await fetch(`${APIDOMAIN}/login`, {
     headers: {
       Authorization: process.env.ELIM_KEY!,
@@ -61,7 +62,7 @@ export default async function handler(
   });
   const userID = email.split("@")[0].toUpperCase();
   if (token.status !== 200) {
-    console.warn(token.status, process.env.ElIM_KEY);
+    console.warn(token.status, process.env, process.env.ELIM_KEY);
     if (token.status === 469) {
       //user not found, create user
       const createUser = await fetch(`${APIDOMAIN}/createUser`, {
