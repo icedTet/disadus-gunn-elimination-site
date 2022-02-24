@@ -18,7 +18,7 @@ export const EliminationUnStarted = (props: { game: MinigameType }) => {
       >
         <h1 className={`text-xl`}> Waiting for game </h1>
         <h1
-          className={`text-6xl p-2 animate-gradient-slow bg-clip-text text-transparent from-red-500 to-red-500 via-yellow-300 bg-gradient-to-r`}
+          className={`text-6xl md:text-3xl p-2 animate-gradient-slow bg-clip-text text-transparent from-red-500 to-red-500 via-yellow-300 bg-gradient-to-r`}
         >
           {props.game.name}
         </h1>
