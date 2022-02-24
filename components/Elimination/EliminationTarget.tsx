@@ -5,6 +5,7 @@ import { useEliminationStats } from "../../Helpers/Hooks/Elimination/Elimination
 import { useEliminationUserData } from "../../Helpers/Hooks/Elimination/EliminationUserDataHook";
 import { useUser } from "../../Helpers/Hooks/UserHook";
 import { MinigameType } from "../../Types/MinigameTypes";
+import { MonogramPFP } from "../Monogram";
 
 export const EliminationTarget = (props: { gameID?: string }) => {
   const stats = useEliminationStats(props.gameID);
@@ -24,12 +25,9 @@ export const EliminationTarget = (props: { gameID?: string }) => {
         <BiTargetLock className={`w-8 h-8`} /> Current Target
       </div>
       <div className={`flex flex-row gap-8 w-full justify-center items-center flex-grow`}>
-        <img
-          src={`https://disadus.app/logo.png`}
-          className={`w-24 h-24 rounded-full`}
-        />
+      <MonogramPFP user={target} className={`w-24 h-24`} />
         <div className={`flex flex-col gap-1 h-full justify-center `}>
-          <span className={`text-3xl font-bold font-varela text-white`}>
+          <span className={`text-3xl font-bold text-white`}>
             {target?.firstName} {target?.lastName}
           </span>
           <span className={`text-xl font-medium text-yellow-100`}>

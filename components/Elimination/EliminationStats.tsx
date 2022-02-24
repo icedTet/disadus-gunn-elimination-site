@@ -3,6 +3,7 @@ import { useEliminationLeaderboard } from "../../Helpers/Hooks/Elimination/Elimi
 import { useEliminationStats } from "../../Helpers/Hooks/Elimination/EliminationStatsHook";
 import { useUser } from "../../Helpers/Hooks/UserHook";
 import { MinigameType } from "../../Types/MinigameTypes";
+import { MonogramPFP } from "../Monogram";
 
 export const EliminationStats = (props: { gameID?: string }) => {
   const stats = useEliminationStats(props.gameID);
@@ -17,10 +18,7 @@ export const EliminationStats = (props: { gameID?: string }) => {
     >
       <div className={`text-xl dark:text-gray-200 font-medium`}>User Stats</div>
       <div className={`flex flex-row gap-2 w-full justify-evenly`}>
-        <img
-          src={`https://disadus.app/logo.png`}
-          className={`w-20 h-20 rounded-full`}
-        />
+        <MonogramPFP user={self} className={`w-20 h-20`} />
         <div className={`flex flex-col gap-2 flex-grow h-full justify-evenly`}>
           <span className={`text-xl font-bold`}>
             {self?.firstName} {self?.lastName}

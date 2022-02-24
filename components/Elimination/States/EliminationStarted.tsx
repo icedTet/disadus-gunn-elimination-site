@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useAnnouncements } from "../../../Helpers/Hooks/AnnouncementHook";
 import { useScreenResize } from "../../../Helpers/Hooks/ScreenResizeHook";
 import {
   getCurrentBreakpoint,
@@ -13,6 +14,7 @@ import EliminationLeaderboard from "../Leaderboard/EliminationLeaderboardBase";
 export const EliminationStarted = (props: { game: MinigameType }) => {
   const screenSize = useScreenResize();
   const [currentTab, setCurrentTab] = useState(0);
+  
   return (
     <div className={`w-full h-full flex flex-row md:flex-col`}>
       <div className={`flex-grow flex flex-col relative`}>

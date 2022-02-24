@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import { useUser } from "../../../Helpers/Hooks/UserHook";
 import { EliminationKillFeed } from "../../../Types/EliminationTypes";
+import { MonogramPFP } from "../../Monogram";
 const Killtypes = {
   kill: "Eliminated",
 };
@@ -16,8 +17,8 @@ export const EliminationKillFeedEntry = (props: {
       <div
         className={`w-full bg-gray-50 dark:bg-gray-700 shadow-md rounded-lg flex flex-row gap-4 px-6 py-4 items-center md:mb-6`}
       >
-        <img
-          src={`https://disadus.app/logo.png`}
+        <MonogramPFP
+          user={target}
           className={`w-16 h-16 rounded-full flex-shrink-0 drop-shadow`}
         />
         <div className={`flex flex-col gap-1`}>

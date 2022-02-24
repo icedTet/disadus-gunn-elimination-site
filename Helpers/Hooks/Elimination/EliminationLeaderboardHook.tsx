@@ -8,11 +8,14 @@ import {
   EliminationUserData,
 } from "../../../Types/EliminationTypes";
 import EliminationToken from "../../../Global/ElimAPIClient";
+import LiveEventsListener from "../../Listeners/LiveEventsListener";
+import { EliminationListener } from "../../Listeners/EliminationListener";
 
 export const useEliminationLeaderboard = (gameID?: string) => {
   const [leaderboard, setLeaderboard] = useState(
     null as null | EliminationLeaderboardEntry[]
   );
+
   useEffect(() => {
     if (!gameID) return;
     let cancelled = false;
@@ -24,20 +27,25 @@ export const useEliminationLeaderboard = (gameID?: string) => {
           !cancelled &&
           setLeaderboard(data as EliminationLeaderboardEntry[])
       );
-    EliminationToken.then((token) => {
-      fetch(`${APIDOMAIN}/elimination/game/${gameID}/top`, {
-        headers: {
-          Authorization: token!,
-        },
-      })
-        .then((resp) => resp.json())
-        .then((resp) => {
-          localforage.setItem(`eliminationLeaderboard-${gameID}`, resp);
-          !cancelled && setLeaderboard(resp as EliminationLeaderboardEntry[]);
-        });
-    });
+    const fetchLeaderboard = async () => {
+      EliminationToken.then((token) => {
+        fetch(`${APIDOMAIN}/elimination/game/${gameID}/top`, {
+          headers: {
+            Authorization: token!,
+          },
+        })
+          .then((resp) => resp.json())
+          .then((resp) => {
+            localforage.setItem(`eliminationLeaderboard-${gameID}`, resp);
+            !cancelled && setLeaderboard(resp as EliminationLeaderboardEntry[]);
+          });
+      });
+    };
+    fetchLeaderboard();
+    EliminationListener.getInstance().on("elimination", fetchLeaderboard);
     return () => {
       cancelled = true;
+      EliminationListener.getInstance().off("elimination", fetchLeaderboard);
     };
   }, [gameID]);
   return leaderboard;

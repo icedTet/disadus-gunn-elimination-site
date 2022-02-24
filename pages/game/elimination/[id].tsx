@@ -8,7 +8,7 @@ import EliminationLeaderboard from "../../../components/Elimination/Leaderboard/
 import { APIDOMAIN } from "../../../Helpers/constants";
 import UserContext from "../../../Helpers/Contexts/UserContext";
 import { useMinigame } from "../../../Helpers/Hooks/MinigameHook";
-import { MinigameType } from "../../../Types/MinigameTypes";
+import { GameAnnouncement, MinigameType } from "../../../Types/MinigameTypes";
 import InferNextPropsType from "infer-next-props-type";
 import { EliminationStarted } from "../../../components/Elimination/States/EliminationStarted";
 import { EliminationUnStarted } from "../../../components/Elimination/States/EliminationUnStarted";

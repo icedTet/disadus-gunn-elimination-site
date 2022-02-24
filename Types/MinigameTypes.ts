@@ -18,3 +18,10 @@ export type MinigameUser = {
   createdBy: "Disadus" | "Gunn.One" | "WATT" | "Standalone";
   password: string;
 };
+
+export type GameAnnouncement = {
+  game: string;
+  time: number;
+  message: string;
+  userID: string;
+};

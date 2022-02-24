@@ -25,7 +25,7 @@ export const GamesSidebar = () => {
   return (
     <>
       <div
-        className={`lg:hidden top-0 z-20 h-full overflow-visible bg-gray-100 w-80 course-sidebar dark:bg-gray-800 lg:bottom-0 lg:h-16 lg:w-full transition-all lg:order-1 flex-shrink-0`}
+        className={`lg:hidden top-0 z-20 h-full overflow-auto bg-gray-100 w-80 course-sidebar dark:bg-gray-800 lg:bottom-0 lg:h-16 lg:w-full transition-all lg:order-1 flex-shrink-0`}
       >
         <CreateGameModal
           visible={createGameOpen}

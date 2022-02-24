@@ -2,6 +2,7 @@ import { BiCrown, BiMedal } from "react-icons/bi";
 import { useCurrentUser } from "../../../Helpers/Hooks/CurrentUserHook";
 import { useUser } from "../../../Helpers/Hooks/UserHook";
 import { EliminationLeaderboardEntry } from "../../../Types/EliminationTypes";
+import { MonogramPFP } from "../../Monogram";
 
 export const EliminationLeaderboardEntryViewer = (props: {
   userData: EliminationLeaderboardEntry;
@@ -17,18 +18,24 @@ export const EliminationLeaderboardEntryViewer = (props: {
     >
       <div
         className={`flex-shrink-0 p-2 h-8 w-8 text-center rounded-full ${
-          currentUser?.userID === userData.userID ?`bg-emerald-400 bg-opacity-50`:`bg-gray-100 dark:bg-gray-800`
+          currentUser?.userID === userData.userID
+            ? `bg-emerald-400 bg-opacity-50`
+            : `bg-gray-100 dark:bg-gray-800`
         } flex flex-row items-center justify-center shadow-md `}
       >
         {index === -1 ? `—` : index + 1}
       </div>
       <div
         className={`flex flex-grow h-16 bg-gray-100 ${
-          currentUser?.userID === userData.userID ?`bg-emerald-400 bg-opacity-50`:`bg-gray-100 dark:bg-gray-750`
-        }  rounded-full flex-row gap-2 shadow-sm ${userData.eliminated && `opacity-50`}`}
+          currentUser?.userID === userData.userID
+            ? `bg-emerald-400 bg-opacity-50`
+            : `bg-gray-100 dark:bg-gray-750`
+        }  rounded-full flex-row gap-2 shadow-sm ${
+          userData.eliminated && `opacity-50`
+        }`}
       >
-        <img
-          src={`https://disadus.app/logo.png`}
+        <MonogramPFP
+          user={user}
           className={`w-16 h-16 rounded-full flex-shrink-0 drop-shadow `}
         />
         <div className={`flex flex-col flex-grow justify-evenly`}>
