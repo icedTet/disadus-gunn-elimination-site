@@ -40,7 +40,7 @@ export const MonogramPFP = (props: {
 
   return (
     <div
-      className={`rounded-full ${className} flex flex-row items-center justify-center text-2xl`}
+      className={`rounded-full ${className} flex flex-row items-center justify-center text-2xl flex-shrink-0`}
       style={{
         background: gradients[hash],
       }}

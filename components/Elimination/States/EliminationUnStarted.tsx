@@ -2,14 +2,17 @@ import { RefreshIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 import EliminationToken from "../../../Global/ElimAPIClient";
 import { APIDOMAIN } from "../../../Helpers/constants";
+import { useAnnouncements } from "../../../Helpers/Hooks/AnnouncementHook";
 import { useCurrentUser } from "../../../Helpers/Hooks/CurrentUserHook";
 import { MinigameType } from "../../../Types/MinigameTypes";
+import { AnnouncementViewer } from "../../GameAnnouncement";
 import { EliminationInfoboard } from "../EliminationInfoboard";
 import { EliminationKillFeedBase } from "../KillFeed/EliminationKillFeedBase";
 import EliminationLeaderboard from "../Leaderboard/EliminationLeaderboardBase";
 
 export const EliminationUnStarted = (props: { game: MinigameType }) => {
   const [starting, setStarting] = useState(false);
+  const announcements = useAnnouncements(props.game.id);
   const user = useCurrentUser();
   return (
     <div className={`w-full h-full flex flex-col gap-4`}>
@@ -52,6 +55,13 @@ export const EliminationUnStarted = (props: { game: MinigameType }) => {
                 "Start Game"
               )}
             </button>
+          </div>
+        )}
+        {announcements && !!announcements.length && (
+          <div className={`flex flex-row w-full max-w-prose mt-4`}>
+            <AnnouncementViewer
+              announcement={announcements?.sort((b, a) => a.time - b.time)[0]}
+            />
           </div>
         )}
       </div>
