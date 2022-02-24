@@ -6,6 +6,7 @@ import { MinigameType } from "../../../Types/MinigameTypes";
 import { EliminationKillFeed } from "../../../Types/EliminationTypes";
 import { EliminationEvent } from "../../Listeners/EventsTypes";
 import { EliminationListener } from "../../Listeners/EliminationListener";
+import EliminationToken from "../../../Global/ElimAPIClient";
 
 export const useEliminationKillFeed = (gameID?: string) => {
   const [killfeed, setKillFeed] = useState(
@@ -21,10 +22,10 @@ export const useEliminationKillFeed = (gameID?: string) => {
         (data) =>
           data && !cancelled && setKillFeed(data as EliminationKillFeed[])
       );
-    APIClient!.waitForToken().then((token) => {
+    EliminationToken.then((token) => {
       fetch(`${APIDOMAIN}/elimination/game/${gameID}/kills`, {
         headers: {
-          Authorization: token.token,
+          Authorization: token!,
         },
       })
         .then((resp) => resp.json())
@@ -74,12 +75,12 @@ export const useEliminationKillFeed = (gameID?: string) => {
     };
   }, [gameID]);
   const fetchMore = async (limit: number, before: number) => {
-    APIClient!.waitForToken().then((token) => {
+    EliminationToken.then((token) => {
       fetch(
         `${APIDOMAIN}/elimination/game/${gameID}/kills?limit=${limit}&before=${before}`,
         {
           headers: {
-            Authorization: token.token,
+            Authorization: token!,
           },
         }
       )
