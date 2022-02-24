@@ -46,7 +46,7 @@ export const MonogramPFP = (props: {
       }}
     >
       <div className="text-center">
-        <span className="font-bold  font-varela">{initials}</span>
+        <span className="font-bold font-varela text-gray-800/40">{initials}</span>
       </div>
     </div>
   );
