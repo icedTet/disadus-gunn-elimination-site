@@ -58,7 +58,7 @@ export const EliminationUnStarted = (props: { game: MinigameType }) => {
           </div>
         )}
         {announcements && !!announcements.length && (
-          <div className={`flex flex-row w-full max-w-prose mt-4`}>
+          <div className={`flex flex-row w-[90vw] max-w-prose mt-4`}>
             <AnnouncementViewer
               announcement={announcements?.sort((b, a) => a.time - b.time)[0]}
             />
