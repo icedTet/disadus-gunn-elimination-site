@@ -18,7 +18,11 @@ export const EliminationKillFeedBase = (props: { gameID?: string }) => {
         ref={parentRef}
       >
         {killfeed?.map((killfeedEntry, index) => (
-          <EliminationKillFeedEntry killItem={killfeed![index]} index={index} />
+          <EliminationKillFeedEntry
+            killItem={killfeedEntry}
+            index={index}
+            key={`${killfeedEntry.at}${killfeedEntry.entity}${killfeedEntry.target}`}
+          />
         ))}
       </div>
     </div>
