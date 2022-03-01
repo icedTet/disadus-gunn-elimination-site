@@ -6,6 +6,7 @@ import { useEliminationStats } from "../../Helpers/Hooks/Elimination/Elimination
 import { useMinigame } from "../../Helpers/Hooks/MinigameHook";
 import { useUser } from "../../Helpers/Hooks/UserHook";
 import { MinigameType } from "../../Types/MinigameTypes";
+import { HelpElimModal } from "./Modals/HelpElimModal";
 import { KillCodeModal } from "./Modals/KillCodeModal";
 
 export const EliminationInfoCard = (props: { gameID?: string }) => {
@@ -22,6 +23,12 @@ export const EliminationInfoCard = (props: { gameID?: string }) => {
         open={eliminationPopup}
         setOpen={setEliminationPopup}
       />
+      <HelpElimModal
+        userData={elimInfo}
+        open={helpOpen}
+        setOpen={setHelpOpen}
+      />
+
       <div
         className={`w-full h-full dark:bg-gray-750 bg-gray-100 rounded-lg p-4 flex flex-col gap-4 shadow-md`}
       >

@@ -383,5 +383,7 @@ module.exports = {
     require("tailwind-scrollbar"),
     require("tailwindcss-textshadow"),
     require("tailwind-scrollbar-hide"),
+    require('@tailwindcss/typography'),
+
   ],
 };

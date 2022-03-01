@@ -13,7 +13,7 @@ export const useAllMinigames = () => {
     localforage
       .getItem(`Minigames`)
       .then((data) => data && setMinigames(data as MinigameType[]));
-    fetch(`${APIDOMAIN}/games`)
+    fetch(`${APIDOMAIN}/games?dev=tr`)
       .then((resp) => resp.json())
       .then((resp) => {
         console.log(resp);
