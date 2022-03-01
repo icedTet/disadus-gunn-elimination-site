@@ -40,7 +40,7 @@ export const HelpElimModal = (props: {
               assigned another player (target). Your mission is to eliminate
               your target by tagging them with a miniature stuffed plushie.
               After you eliminate your first target, you will get assigned your
-              target's target. Eliminations are only valid under certain
+              target&apos;s target. Eliminations are only valid under certain
               circumstances (see below). The game will end on 3/31 11:59 PM and
               whoever has the most eliminations by then wins!
             </summary>
