@@ -24,21 +24,19 @@ export const EliminationTarget = (props: { gameID?: string }) => {
       >
         <BiTargetLock className={`w-8 h-8`} /> Current Target
       </div>
-      <div className={`flex flex-row gap-8 w-full justify-center items-center flex-grow`}>
-      <MonogramPFP user={target} className={`w-24 h-24`} />
-        <div className={`flex flex-col gap-1 h-full justify-center font-medium`}>
+      <div
+        className={`flex flex-row gap-8 w-full justify-center items-center flex-grow`}
+      >
+        <MonogramPFP user={target} className={`w-24 h-24`} />
+        <div
+          className={`flex flex-col gap-1 h-full justify-center font-medium`}
+        >
           <span className={`text-3xl font-bold text-white`}>
             {target?.firstName} {target?.lastName}
           </span>
-          <span className={`text-xl  text-yellow-100`}>
-            @{target?.userID}
-          </span>
-          <span>
-            Rank: {targetRank}
-          </span>
-          <span>
-            Kills: {elimTarget?.kills}
-          </span>
+          <span className={`text-xl  text-yellow-100`}>@{target?.userID}</span>
+          <span>Rank: {(targetRank || -1) + 1}</span>
+          <span>Kills: {leaderboard?.[targetRank!]?.kills}</span>
         </div>
       </div>
     </div>
