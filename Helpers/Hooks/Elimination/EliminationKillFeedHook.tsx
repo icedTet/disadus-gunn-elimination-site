@@ -23,7 +23,7 @@ export const useEliminationKillFeed = (gameID?: string) => {
           data && !cancelled && setKillFeed(data as EliminationKillFeed[])
       );
     EliminationToken.then((token) => {
-      fetch(`${APIDOMAIN}/elimination/game/${gameID}/kills`, {
+      fetch(`${APIDOMAIN}/elimination/game/${gameID}/kills?limit=999`, {
         headers: {
           Authorization: token!,
         },
