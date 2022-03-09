@@ -26,12 +26,18 @@ export const EliminationTarget = (props: { gameID?: string }) => {
       </div>
       <div className={`flex flex-row gap-8 w-full justify-center items-center flex-grow`}>
       <MonogramPFP user={target} className={`w-24 h-24`} />
-        <div className={`flex flex-col gap-1 h-full justify-center `}>
+        <div className={`flex flex-col gap-1 h-full justify-center font-medium`}>
           <span className={`text-3xl font-bold text-white`}>
             {target?.firstName} {target?.lastName}
           </span>
-          <span className={`text-xl font-medium text-yellow-100`}>
+          <span className={`text-xl  text-yellow-100`}>
             @{target?.userID}
+          </span>
+          <span>
+            Rank: {targetRank}
+          </span>
+          <span>
+            Kills: {elimTarget?.kills}
           </span>
         </div>
       </div>
