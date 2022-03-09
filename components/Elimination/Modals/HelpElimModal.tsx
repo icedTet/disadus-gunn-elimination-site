@@ -154,7 +154,7 @@ export const HelpElimModal = (props: {
             </details>
 
             <details>
-              <summary class="cursor-pointer">
+              <summary className="cursor-pointer">
                 Click to expand Immunity Calendar
               </summary>
               <table>
