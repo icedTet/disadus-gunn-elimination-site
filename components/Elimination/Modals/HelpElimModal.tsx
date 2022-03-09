@@ -152,6 +152,71 @@ export const HelpElimModal = (props: {
                 </li>
               </ol>
             </details>
+            <details>
+              <summary className={"cursor-pointer"}>
+                Click to expand Calendar (3/1/22 12AM - 3/31/22 11:59 PM) (Day,
+                Rule)
+              </summary>
+              <ol>
+                <li>
+                  Game officially starts at 12:00 AM, Plushie must be held in
+                  right hand.
+                </li>
+                <li>Plushie must be held in left hand.</li>
+                <li>Plushie must be held in right hand.</li>
+                <li>Plushie must be held in left hand.</li>
+                <li>Plushie must be held in either hand</li>
+                <li>
+                  Targets change at 8:00PM;Plushie must be held in either hand
+                </li>
+                <li>Plushie must be held in both hands</li>
+                <li>Plushie must be attatched to arm.</li>
+                <li>
+                  Targets change at 8:00PM;Plushie must be held in either hand
+                </li>
+                <li>Plushie must be above shoulder</li>
+                <li>Players must be below the waist</li>
+                <li>Plushie must be held in either hand</li>
+                <li>
+                  Targets change at 8:00PM;Plushie must be held in either hand
+                </li>
+                <li>Players must wear red</li>
+                <li>Players must wear pink</li>
+                <li>
+                  Targets change at 8:00PM;Plushie must be held in either hand
+                </li>
+                <li>Players must wear green</li>
+                <li>Players must wear orange</li>
+                <li>Plushie must be held in either hand</li>
+                <li>
+                  Targets change at 8:00PM;Plushie must be held in either hand
+                </li>
+                <li>Players must be under a roof or overhang</li>
+                <li>Players must be holding plushie in both hands</li>
+                <li>
+                  Targets change at 8:00PM;Plushie must be held in either hand
+                </li>
+                <li>
+                  Plushie must be touching shoulder of player who is holding it
+                </li>
+                <li>Player must be wearing a hat</li>
+                <li>Plushie must be held in either hand</li>
+                <li>
+                  FINAL Targets change at 8:00PM;Plushie must be held in either
+                  hand
+                </li>
+                <li>
+                  Plushie must be touching shoulder of player who is holding it
+                </li>
+                <li>Players must be wearing a hat</li>
+                <li>Plushie must be touching wall (no poles)</li>
+                <li>Nobody is safe</li>
+                <li>
+                  The player with the most people eliminated and is still alive
+                  WINS
+                </li>
+              </ol>
+            </details>
           </div>
         </div>
       </div>
