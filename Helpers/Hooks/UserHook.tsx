@@ -9,14 +9,18 @@ export const useUser = (id?: string) => {
   const [user, setuser] = useState(null as null | MinigameUser);
   useEffect(() => {
     if (!id) return;
-    localforage
-      .getItem(`user-${id}`)
-      .then((data) => data && setuser(data as MinigameUser));
-    fetch(`${APIDOMAIN}/users/${id}`).then(async (response) => {
-      const resp = await response.json();
-      setuser(resp);
-      localforage.setItem(`user-${id}`, resp);
-    });
+    (async () => {
+      let cachedUInfo = await localforage.getItem(`user-${id}`);
+      if (cachedUInfo) {
+        setuser(cachedUInfo as MinigameUser);
+        return;
+      }
+      fetch(`${APIDOMAIN}/users/${id}`).then(async (response) => {
+        const resp = await response.json();
+        setuser(resp);
+        localforage.setItem(`user-${id}`, resp);
+      });
+    })();
   }, [id]);
   return user;
 };

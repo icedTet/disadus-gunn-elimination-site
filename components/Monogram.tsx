@@ -16,6 +16,7 @@ export const MonogramPFP = (props: {
 }) => {
   const { user, className } = props;
   if (!user) return null;
+  console.log(user);
   const { firstName, lastName, email } = user;
   const initials = `${firstName[0]}${lastName[0]}`;
   // generate hash from name

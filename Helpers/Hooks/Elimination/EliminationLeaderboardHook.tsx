@@ -29,7 +29,7 @@ export const useEliminationLeaderboard = (gameID?: string) => {
       );
     const fetchLeaderboard = async () => {
       EliminationToken.then((token) => {
-        fetch(`${APIDOMAIN}/elimination/game/${gameID}/top`, {
+        fetch(`${APIDOMAIN}/elimination/game/${gameID}/top?limit=500`, {
           headers: {
             Authorization: token!,
           },
