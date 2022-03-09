@@ -152,70 +152,215 @@ export const HelpElimModal = (props: {
                 </li>
               </ol>
             </details>
+
             <details>
-              <summary className={"cursor-pointer"}>
-                Click to expand Calendar (3/1/22 12AM - 3/31/22 11:59 PM) (Day,
-                Rule)
+              <summary class="cursor-pointer">
+                Click to expand Immunity Calendar
               </summary>
-              <ol>
-                <li>
-                  Game officially starts at 12:00 AM, Plushie must be held in
-                  right hand.
-                </li>
-                <li>Plushie must be held in left hand.</li>
-                <li>Plushie must be held in right hand.</li>
-                <li>Plushie must be held in left hand.</li>
-                <li>Plushie must be held in either hand</li>
-                <li>
-                  Targets change at 8:00PM;Plushie must be held in either hand
-                </li>
-                <li>Plushie must be held in both hands</li>
-                <li>Plushie must be attatched to arm.</li>
-                <li>
-                  Targets change at 8:00PM;Plushie must be held in either hand
-                </li>
-                <li>Plushie must be above shoulder</li>
-                <li>Players must be below the waist</li>
-                <li>Plushie must be held in either hand</li>
-                <li>
-                  Targets change at 8:00PM;Plushie must be held in either hand
-                </li>
-                <li>Players must wear red</li>
-                <li>Players must wear pink</li>
-                <li>
-                  Targets change at 8:00PM;Plushie must be held in either hand
-                </li>
-                <li>Players must wear green</li>
-                <li>Players must wear orange</li>
-                <li>Plushie must be held in either hand</li>
-                <li>
-                  Targets change at 8:00PM;Plushie must be held in either hand
-                </li>
-                <li>Players must be under a roof or overhang</li>
-                <li>Players must be holding plushie in both hands</li>
-                <li>
-                  Targets change at 8:00PM;Plushie must be held in either hand
-                </li>
-                <li>
-                  Plushie must be touching shoulder of player who is holding it
-                </li>
-                <li>Player must be wearing a hat</li>
-                <li>Plushie must be held in either hand</li>
-                <li>
-                  FINAL Targets change at 8:00PM;Plushie must be held in either
-                  hand
-                </li>
-                <li>
-                  Plushie must be touching shoulder of player who is holding it
-                </li>
-                <li>Players must be wearing a hat</li>
-                <li>Plushie must be touching wall (no poles)</li>
-                <li>Nobody is safe</li>
-                <li>
-                  The player with the most people eliminated and is still alive
-                  WINS
-                </li>
-              </ol>
+              <table>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <strong>1 GAME STARTS</strong>
+                      <br />
+                      Players must be holding the animal in their <u>
+                        RIGHT
+                      </u>{" "}
+                      hand
+                    </td>
+                    <td>
+                      <strong>2</strong>
+                      <br />
+                      Players must be holding the animal in their <u>
+                        LEFT
+                      </u>{" "}
+                      hand
+                    </td>
+                    <td>
+                      <strong>3</strong>
+                      <br />
+                      Players must be holding the animal in their <u>
+                        RIGHT
+                      </u>{" "}
+                      hand
+                    </td>
+                    <td>
+                      <strong>4</strong>
+                      <br />
+                      Players must be holding the animal in their <u>
+                        LEFT
+                      </u>{" "}
+                      hand
+                    </td>
+                    <td>
+                      <strong>5</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>
+                        6<br />
+                        Targets Change
+                        <br />8 PM
+                      </strong>
+                    </td>
+                    <td>
+                      <strong>7</strong>
+                      <br />
+                      Players must be holding the animal with both hands
+                    </td>
+                    <td>
+                      <strong>8</strong>
+                      <br />
+                      Players must tape/attach the animal to their arm
+                    </td>
+                    <td>
+                      <strong>9</strong>
+                      <br />
+                      Targets Change
+                      <br />8 PM
+                    </td>
+                    <td>
+                      <strong>10</strong>
+                      <br />
+                      Players must be holding animal <u>ABOVE</u> their shoulder
+                    </td>
+                    <td>
+                      <strong>11</strong>
+                      <br />
+                      Players must be holding animal <u>BELOW</u> waist
+                    </td>
+                    <td>
+                      <strong>12</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>
+                        13
+                        <br />
+                        Targets Change
+                        <br />8 PM
+                      </strong>
+                    </td>
+                    <td>
+                      <strong>14</strong>
+                      <br />
+                      Players must be (visibly) wearing <u>RED</u>
+                    </td>
+                    <td>
+                      <strong>15</strong>
+                      <br />
+                      Players must be (visibly) wearing <u>PINK</u>
+                    </td>
+                    <td>
+                      <strong>16</strong>
+                      <br />
+                      Targets Change
+                      <br />8 PM
+                    </td>
+                    <td>
+                      <strong>17</strong>
+                      <br />
+                      (St. Patricks Day) Players must (visibly) wear{" "}
+                      <u>GREEN</u>
+                    </td>
+                    <td>
+                      <strong>18</strong>
+                      <br />
+                      Players must be (visibly) wearing <u>ORANGE</u>
+                    </td>
+                    <td>
+                      <strong>19</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>
+                        20
+                        <br />
+                        Targets Change
+                        <br />8 PM
+                      </strong>
+                    </td>
+                    <td>
+                      <strong>21</strong>
+                      <br />
+                      Players must be under a roof or overhang
+                    </td>
+                    <td>
+                      <strong>22</strong>
+                      <br />
+                      Players must be holding the animal with both hands
+                    </td>
+                    <td>
+                      <strong>23</strong>
+                      <br />
+                      Targets Change
+                      <br />8 PM
+                    </td>
+                    <td>
+                      <strong>24</strong>
+                      <br />
+                      Players animal must be touching their shoulder
+                    </td>
+                    <td>
+                      <strong>25</strong>
+                      <br />
+                      Players must be (visibly) wearing a <u>HAT</u>
+                    </td>
+                    <td>
+                      <strong>26</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>
+                        27
+                        <br />
+                        Targets Change
+                        <br />8 PM
+                      </strong>
+                    </td>
+                    <td>
+                      <strong>28</strong>
+                      <br />
+                      Players animal must be touching their shoulder
+                    </td>
+                    <td>
+                      <strong>29</strong>
+                      <br />
+                      layers must be (visibly) wearing a <u>HAT</u>
+                    </td>
+                    <td>
+                      <strong>30</strong>
+                      <br />
+                      Players must be touching any wall w/animal
+                      <br />
+                      (no poles)
+                    </td>
+                    <td>
+                      <strong>31</strong>
+                      <br />
+                      NO ONE IS SAFE (can be tagged anytime even w/animal)
+                    </td>
+                    <td>
+                      <strong>
+                        <br />
+                        31st 11:59 is when GAME ENDS
+                      </strong>
+                    </td>
+                    <td>
+                      <strong>
+                        The player with the most people eliminated and is still
+                        alive WINS
+                      </strong>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </details>
           </div>
         </div>
